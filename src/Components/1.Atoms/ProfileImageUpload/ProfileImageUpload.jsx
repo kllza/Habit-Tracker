@@ -1,10 +1,11 @@
+import PropTypes from "prop-types";
 import { forwardRef } from "react";
 import {
   ref as storageRefFunc,
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import { setDoc, doc } from "firebase/firestore"; // Importar solo lo que necesitas
+import { setDoc, doc } from "firebase/firestore";
 import { storage } from "../../../../firebase.config";
 import { getFirestore } from "firebase/firestore";
 
@@ -38,5 +39,10 @@ const ProfileImageUpload = forwardRef(({ userId, onImageUrlUpdate }, ref) => {
 });
 
 ProfileImageUpload.displayName = "ProfileImageUpload";
+
+ProfileImageUpload.propTypes = {
+  userId: PropTypes.string.isRequired,
+  onImageUrlUpdate: PropTypes.func.isRequired,
+};
 
 export default ProfileImageUpload;

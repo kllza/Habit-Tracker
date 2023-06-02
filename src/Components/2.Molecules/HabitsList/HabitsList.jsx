@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import {
   getFirestore,
@@ -63,6 +64,11 @@ const HabitsList = ({ userId, onHabitsFetched }) => {
       ))}
     </div>
   );
+};
+
+HabitsList.propTypes = {
+  userId: PropTypes.string.isRequired,
+  onHabitsFetched: PropTypes.func.isRequired,
 };
 
 export default HabitsList;

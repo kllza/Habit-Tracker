@@ -14,13 +14,13 @@ const FeatureSection = () => {
           />
           <FeatureCard
             icon="nombredelicono.svg"
-            heading="Seguimiento en tiempo real"
-            description="Obtén información sobre tu progreso con gráficos y calendarios detallados."
+            heading="Lorem Ipsum"
+            description="Non velit ea culpa fugiat qui est sit magna amet cillum. Eiusmod tempor duis magna adipisicing anim aliqua."
           />
           <FeatureCard
             icon="nombredelicono.svg"
-            heading="Recordatorios personalizables"
-            description="Configura recordatorios que se adapten a tu rutina diaria para que desarrolles tus hábitos con éxito."
+            heading="Lorem Ipsum"
+            description="Non velit ea culpa fugiat qui est sit magna amet cillum. Eiusmod tempor duis magna adipisicing anim aliqua."
           />
         </div>
       </div>

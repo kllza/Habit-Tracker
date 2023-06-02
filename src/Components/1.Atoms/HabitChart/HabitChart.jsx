@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { auth } from "../../../../firebase.config";
 
 const HabitChart = ({ habitId }) => {
@@ -18,7 +19,8 @@ const HabitChart = ({ habitId }) => {
     };
 
     fetchWeeklyStats();
-  }, []);
+  }, [habitId]);
+  //Cambie esto lo rellene con habitId
 
   return (
     <div>
@@ -35,6 +37,10 @@ const HabitChart = ({ habitId }) => {
       ))}
     </div>
   );
+};
+
+HabitChart.propTypes = {
+  habitId: PropTypes.string.isRequired,
 };
 
 export default HabitChart;

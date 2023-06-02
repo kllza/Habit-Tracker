@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Navigation from "../Navigation/Navigation";
 import UserActions from "../../Template/UserActions/UserActions";
 import Profile from "../Profile/Profile";
@@ -14,6 +15,11 @@ const Header = ({ authenticated, user }) => {
       )}
     </header>
   );
+};
+
+Header.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+  user: PropTypes.object,
 };
 
 export default Header;

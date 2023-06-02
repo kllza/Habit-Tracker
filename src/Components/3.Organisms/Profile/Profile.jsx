@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../../firebase.config";
@@ -29,7 +30,8 @@ const Profile = ({ user }) => {
     return () => {
       unsubscribe();
     };
-  }, [user.uid]);
+  }, [user.uid, firestore]);
+  //Agregue firestore aqui
 
   const handleSignOut = async () => {
     setLoading(true);
@@ -76,6 +78,14 @@ const Profile = ({ user }) => {
       </div>
     </div>
   );
+};
+
+Profile.propTypes = {
+  user: PropTypes.shape({
+    uid: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    photoURL: PropTypes.string,
+  }).isRequired,
 };
 
 export default Profile;

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { auth } from "../../../../firebase.config";
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 const HabitTracker = ({ habitId }) => {
   const [completed, setCompleted] = useState(() => {
@@ -78,6 +78,10 @@ const HabitTracker = ({ habitId }) => {
       </div>
     </div>
   );
+};
+
+HabitTracker.propTypes = {
+  habitId: PropTypes.string.isRequired,
 };
 
 export default HabitTracker;

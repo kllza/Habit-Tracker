@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Heading from "../../1.Atoms/Heading/Heading";
 import SubHeading from "../../1.Atoms/SubHeading/SubHeading";
 import CTAButton from "../../1.Atoms/CTAButton/CTAButton";
@@ -22,6 +23,10 @@ const HeroSection = ({ authenticated }) => {
       </div>
     </section>
   );
+};
+
+HeroSection.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
 };
 
 export default HeroSection;

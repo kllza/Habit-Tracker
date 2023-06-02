@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -79,6 +80,11 @@ const Menu = ({ authenticated, currentPage }) => {
       </ul>
     </div>
   );
+};
+
+Menu.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+  currentPage: PropTypes.string.isRequired,
 };
 
 export default Menu;

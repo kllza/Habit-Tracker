@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const HabitInfo = ({ habit, onDelete }) => {
   const handleClick = () => {
     onDelete(habit.id);
@@ -14,6 +15,16 @@ const HabitInfo = ({ habit, onDelete }) => {
       </div>
     </div>
   );
+};
+
+HabitInfo.propTypes = {
+  habit: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    //frequency: PropTypes.number.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default HabitInfo;

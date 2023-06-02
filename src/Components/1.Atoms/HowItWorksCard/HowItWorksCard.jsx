@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const HowItWorksCard = ({ icon, heading, description }) => {
   return (
     <div className="bg-white rounded-lg p-8 shadow-lg">
@@ -8,6 +10,12 @@ const HowItWorksCard = ({ icon, heading, description }) => {
       <p className="text-gray-500 mb-4">{description}</p>
     </div>
   );
+};
+
+HowItWorksCard.propTypes = {
+  icon: PropTypes.string,
+  heading: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default HowItWorksCard;

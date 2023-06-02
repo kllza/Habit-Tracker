@@ -14,13 +14,13 @@ const HowItWorksSection = () => {
           />
           <HowItWorksCard
             icon="nombredelicono.svg"
-            heading="Marca tu progreso"
-            description="Marca tu progreso en un calendario y observa tu éxito en el gráfico de progreso semanal."
+            heading="Lorem Ipsum"
+            description="Non velit ea culpa fugiat qui est sit magna amet cillum. Eiusmod tempor duis magna adipisicing anim aliqua."
           />
           <HowItWorksCard
             icon="nombredelicono.svg"
-            heading="Recibe recordatorios"
-            description="Configura recordatorios personalizados que te ayuden a cumplir con tu tarea diaria."
+            heading="Lorem Ipsum"
+            description="Non velit ea culpa fugiat qui est sit magna amet cillum. Eiusmod tempor duis magna adipisicing anim aliqua."
           />
         </div>
       </div>

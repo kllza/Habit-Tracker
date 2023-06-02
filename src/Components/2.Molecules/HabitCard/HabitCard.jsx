@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import HabitInfo from "../../1.Atoms/HabitInfo/HabitInfo";
 import HabitProgress from "../HabitProgress/HabitProgress";
 
@@ -10,6 +11,16 @@ const HabitCard = ({ habit, onDelete }) => {
       </div>
     </li>
   );
+};
+
+HabitCard.propTypes = {
+  habit: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default HabitCard;
