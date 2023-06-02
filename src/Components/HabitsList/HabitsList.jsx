@@ -6,7 +6,7 @@ import {
   where,
   onSnapshot,
   deleteDoc,
-  doc
+  doc,
 } from "firebase/firestore";
 import HabitCard from "../HabitCard/HabitCard";
 
@@ -17,12 +17,12 @@ const HabitsList = ({ userId, onHabitsFetched }) => {
   const deleteHabit = async (habitId) => {
     // Aquí va la lógica para eliminar el hábito de la base de datos
     // Crear una referencia al documento del hábito en la base de datos
-  const habitRef = doc(db, "habits", habitId);
+    const habitRef = doc(db, "habits", habitId);
 
-  // Eliminar el documento utilizando la referencia
-  await deleteDoc(habitRef);
+    // Eliminar el documento utilizando la referencia
+    await deleteDoc(habitRef);
 
-  console.log('Hábito eliminado:', habitId);
+    console.log("Hábito eliminado:", habitId);
   };
 
   useEffect(() => {
@@ -54,7 +54,12 @@ const HabitsList = ({ userId, onHabitsFetched }) => {
   return (
     <div>
       {habits.map((habit) => (
-        <HabitCard key={habit.id} habit={habit} onDelete={deleteHabit}></HabitCard>
+        <HabitCard
+          key={habit.id}
+          habit={habit}
+          onDelete={deleteHabit}
+          habitId={habit.id}
+        ></HabitCard>
       ))}
     </div>
   );

@@ -1,12 +1,12 @@
 import "./index.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import HeroSection from "./Components/HeroSection/HeroSection";
 import FeaturesSection from "./Components/FeaturesSection/FeaturesSection";
 import HowItWorksSection from "./Components/HowItWorksSection/HowItWorksSection";
 import HabitsSection from "./Components/HabitsSection/HabitsSection";
 import AddHabitSection from "./Components/AddHabitSection/AddHabitSection";
-import Footer from "./Components/HabitForm/Footer/Footer";
+import Footer from "./Components/Footer/Footer";
 import LoginTest from "./Components/LoginTest/LoginTest";
 import Register from "./Components/Register/Register";
 import { useState, useEffect } from "react";
@@ -56,7 +56,10 @@ function App() {
             <Route path="/login" element={<LoginTest />}></Route>
             <Route path="/register" element={<Register />} />
             <Route path="/habits" element={<HabitsSection habits={habits} />} />
-            <Route path="/add-habit" element={<AddHabitSection onHabitAdded={addHabit}/>} />
+            <Route
+              path="/add-habit"
+              element={<AddHabitSection onHabitAdded={addHabit} />}
+            />
           </Routes>
         </main>
         <Footer />

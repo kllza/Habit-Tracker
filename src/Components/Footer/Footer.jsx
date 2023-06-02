@@ -1,5 +1,5 @@
-import SocialMediaLinks from "../../SocialMediaLinks/SocialMediaLinks";
-import ContactInfo from "../../ContactInfo/ContactInfo";
+import SocialMediaLinks from "../SocialMediaLinks/SocialMediaLinks";
+import ContactInfo from "../ContactInfo/ContactInfo";
 
 const Footer = () => {
   return (

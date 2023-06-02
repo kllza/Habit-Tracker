@@ -1,104 +1,47 @@
-import { useState, useEffect } from "react";
-import { doc, getDoc, setDoc, collection, addDoc } from "firebase/firestore";
-import { auth, db } from "../../../firebase.config";
+import React, { useState, useEffect } from "react";
+import { auth } from "../../../firebase.config";
 
 const HabitTracker = ({ habitId }) => {
-  const [completed, setCompleted] = useState([]);
-  const [completedCount, setCompletedCount] = useState(0);
+  const [completed, setCompleted] = useState(() => {
+    const localStorageKey = `habit-${habitId}-completed`;
+    const storedCompleted = JSON.parse(localStorage.getItem(localStorageKey));
+    return storedCompleted || Array.from({ length: 7 }, () => false);
+  });
+
+  const [completedCount, setCompletedCount] = useState(() => {
+    const localStorageKey = `habit-${habitId}-completed-count`;
+    const storedCompletedCount = JSON.parse(
+      localStorage.getItem(localStorageKey)
+    );
+    return storedCompletedCount || 0;
+  });
 
   const daysOfWeek = ["D", "L", "M", "X", "J", "V", "S"];
 
-  const saveHabitData = () => {
-    const userId = auth.currentUser.uid;
-    const habitRef = doc(db, "habits", userId, habitId);
+  useEffect(() => {
+    const localStorageKey = `habit-${habitId}-completed`;
+    localStorage.setItem(localStorageKey, JSON.stringify(completed));
+  }, [completed, habitId]);
 
-    setDoc(habitRef, {
-      completed: completed ?? [],
-      completedCount: completedCount ?? 0,
-    })
-      .then(() => {
-        console.log("Habit data saved successfully");
-      })
-      .catch((error) => {
-        console.log("Error saving habit data:", error);
-      });
-  };
-
-  const saveWeeklyStats = () => {
-    const weekStart = new Date();
-    weekStart.setHours(0, 0, 0, 0);
-    weekStart.setDate(weekStart.getDate() - weekStart.getDay());
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekStart.getDate() + 6);
-
-    const userId = auth.currentUser.uid;
-    const weeklyStatsRef = collection(db, "habits", userId, habitId, "weeklyStats");
-
-    addDoc(weeklyStatsRef, {
-      weekStart: weekStart,
-      weekEnd: weekEnd,
-      completed: completed || [],
-      completedCount: completedCount || 0,
-    })
-      .then(() => {
-        console.log("Weekly stats saved successfully");
-      })
-      .catch((error) => {
-        console.log("Error saving weekly stats:", error);
-      });
-  };
+  useEffect(() => {
+    const localStorageKey = `habit-${habitId}-completed-count`;
+    localStorage.setItem(localStorageKey, JSON.stringify(completedCount));
+  }, [completedCount, habitId]);
 
   const handleCompletion = (index) => {
-    const updatedCompleted = [...completed];
-    updatedCompleted[index] = !updatedCompleted[index];
-    setCompleted(updatedCompleted);
-    setCompletedCount(updatedCompleted.filter((day) => day).length);
+    const newCompleted = [...completed];
+    newCompleted[index] = !newCompleted[index];
+    setCompleted(newCompleted);
+    setCompletedCount(newCompleted.filter((completed) => completed).length);
   };
 
   const handleReset = () => {
-    setCompleted(Array(7).fill(false));
+    setCompleted(Array.from({ length: 7 }, () => false));
     setCompletedCount(0);
   };
 
-  useEffect(() => {
-    const currentDate = new Date();
-    const currentWeekStart = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      currentDate.getDate() - currentDate.getDay()
-    );
-
-    if (currentDate.getDay() === 0) {
-      saveWeeklyStats();
-      handleReset();
-    }
-  }, []);
-
-  useEffect(() => {
-    saveHabitData();
-  }, [completed, completedCount]);
-
-  useEffect(() => {
-    if (auth.currentUser) {
-      const userId = auth.currentUser.uid;
-      const habitRef = doc(db, "habits", userId, habitId);
-
-      getDoc(habitRef)
-        .then((doc) => {
-          if (doc.exists()) {
-            const habitData = doc.data();
-            setCompleted(habitData.completed || []);
-            setCompletedCount(habitData.completedCount || 0);
-          }
-        })
-        .catch((error) => {
-          console.log("Error getting habit document:", error);
-        });
-    }
-  }, []);
-
   return (
-    <div className="flex justify-between">
+    <div className="flex">
       <div className="w-1/2">
         <h2 className="text-xl font-bold mb-2">Hábito</h2>
         <p className="mb-4">
