@@ -12,18 +12,15 @@ const Menu = ({ authenticated, currentPage }) => {
   return (
     <div>
       <button
-        className="lg:hidden text-gray-600 hover:text-gray-900"
+        className={`lg:hidden text-gray-600 hover:text-gray-900 ${
+          isOpen ? "transform rotate-90" : ""
+        }`}
         onClick={handleToggle}
       >
-        <svg
-          className="h-6 w-6 fill-current"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect y="4" width="24" height="2" />
-          <rect y="11" width="24" height="2" />
-          <rect y="18" width="24" height="2" />
-        </svg>
+        <span className="sr-only">Toggle Menu</span>
+        <div className="w-6 h-1 bg-gray-600 mb-1"></div>
+        <div className="w-6 h-1 bg-gray-600 mb-1"></div>
+        <div className="w-6 h-1 bg-gray-600"></div>
       </button>
 
       <ul
@@ -34,7 +31,7 @@ const Menu = ({ authenticated, currentPage }) => {
         <li className="mr-3">
           <Link
             to="/"
-            className="text-gray-600 hover:text-gray-900 block lg:inline-block lg:mt-0 font-medium"
+            className="text-gray-600 hover:text-purple-700 block lg:inline-block lg:mt-0 font-medium transition-colors duration-300"
           >
             Inicio
           </Link>
@@ -42,7 +39,7 @@ const Menu = ({ authenticated, currentPage }) => {
         <li className="mr-3">
           <Link
             to="features"
-            className="text-gray-600 hover:text-gray-900 block lg:inline-block lg:mt-0 font-medium"
+            className="text-gray-600 hover:text-purple-700 block lg:inline-block lg:mt-0 font-medium transition-colors duration-300"
           >
             Características
           </Link>
@@ -50,7 +47,7 @@ const Menu = ({ authenticated, currentPage }) => {
         <li className="mr-3">
           <Link
             to="how-it-works"
-            className="text-gray-600 hover:text-gray-900 block lg:inline-block lg:mt-0 font-medium"
+            className="text-gray-600 hover:text-purple-700 block lg:inline-block lg:mt-0 font-medium transition-colors duration-300"
           >
             Cómo funciona
           </Link>
@@ -59,7 +56,7 @@ const Menu = ({ authenticated, currentPage }) => {
           <li className="mr-3">
             <Link
               to="habits"
-              className="text-gray-600 hover:text-gray-900 block lg:inline-block lg:mt-0 font-medium"
+              className="text-gray-600 hover:text-purple-700 block lg:inline-block lg:mt-0 font-medium transition-colors duration-300"
             >
               Hábitos
             </Link>
@@ -71,7 +68,7 @@ const Menu = ({ authenticated, currentPage }) => {
           <li>
             <Link
               to="add-habit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full inline-block"
+              className="bg-gray-500 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-full inline-block transition-colors duration-300"
             >
               Agregar hábito
             </Link>

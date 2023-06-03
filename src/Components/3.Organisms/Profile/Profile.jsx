@@ -4,14 +4,14 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../../firebase.config";
 import { onSnapshot, doc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
-import imgDefault from "../../../assets/profile_lion.jpg";
+import imgDefault from "../../../assets/profile_default.jpg";
 
 import ProfileImageUpload from "../../1.Atoms/ProfileImageUpload/ProfileImageUpload";
 import { useRef } from "react";
 
 const Profile = ({ user }) => {
   const username = user.email.split("@")[0];
-  const defaultAvatar = imgDefault; // Reemplaza esto con la URL de tu imagen predeterminada
+  const defaultAvatar = imgDefault;
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 

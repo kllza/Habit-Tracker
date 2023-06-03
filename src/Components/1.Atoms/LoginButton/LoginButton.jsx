@@ -4,7 +4,7 @@ const LoginButton = () => {
   return (
     <Link
       to="/login"
-      className="text-gray-600 hover:text-gray-900 block lg:inline-block lg:mt-0 font-medium mr-3"
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block"
     >
       Iniciar sesión
     </Link>

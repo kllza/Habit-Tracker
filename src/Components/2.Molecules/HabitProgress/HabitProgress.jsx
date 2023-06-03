@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import HabitTracker from "../../1.Atoms/HabitTracker/HabitTracker";
 
-import HabitChart from "../../1.Atoms/HabitChart/HabitChart";
+//import HabitChart from "../../1.Atoms/HabitChart/HabitChart";
 
-const HabitProgress = ({ habit, habitId }) => {
+const HabitProgress = ({ habitId }) => {
   const [completed, setCompleted] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const HabitProgress = ({ habit, habitId }) => {
           completed={completed}
           setCompleted={setCompleted}
         />
-        <HabitChart habitId={habit.id} />
+        {/* <HabitChart habitId={habit.id} /> */}
       </div>
     </div>
   );

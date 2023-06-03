@@ -42,7 +42,7 @@ const HabitTracker = ({ habitId }) => {
 
   return (
     <div className="flex">
-      <div className="w-1/2">
+      <div className="w-1/2 bg-gray-100 rounded p-4">
         <h2 className="text-xl font-bold mb-2">Hábito</h2>
         <p className="mb-4">
           Estado de cumplimiento:{" "}
@@ -62,13 +62,13 @@ const HabitTracker = ({ habitId }) => {
           ))}
         </div>
         <button
-          className="bg-red-500 text-white px-4 py-2 rounded"
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
           onClick={handleReset}
         >
           No cumplí con el hábito
         </button>
       </div>
-      <div className="w-1/2">
+      <div className="w-1/2 bg-gray-200 rounded p-4 ml-4">
         <h2 className="text-xl font-bold mb-2">Estadísticas</h2>
         <p>Total de veces cumplido esta semana: {completedCount}</p>
         <p>
