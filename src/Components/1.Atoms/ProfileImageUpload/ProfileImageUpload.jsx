@@ -13,16 +13,13 @@ const firestore = getFirestore();
 
 const ProfileImageUpload = forwardRef(({ userId, onImageUrlUpdate }, ref) => {
   const handleProfileImageUpload = async (userId, imageFile) => {
-    // Subir imagen a Firebase Storage
     const storageRef = storageRefFunc(storage, `profileImages/${userId}`);
     await uploadBytes(storageRef, imageFile);
     const imageUrl = await getDownloadURL(storageRef);
 
-    // Guardar URL de la imagen en Firestore
     const userDocRef = doc(firestore, "users", userId);
     await setDoc(userDocRef, { profileImageUrl: imageUrl }, { merge: true });
 
-    // Actualizar la imagen de perfil en la interfaz de usuario
     onImageUrlUpdate(imageUrl);
   };
 

@@ -16,14 +16,9 @@ const HabitsList = ({ userId, onHabitsFetched }) => {
   const db = getFirestore();
 
   const deleteHabit = async (habitId) => {
-    // Aquí va la lógica para eliminar el hábito de la base de datos
-    // Crear una referencia al documento del hábito en la base de datos
     const habitRef = doc(db, "habits", habitId);
 
-    // Eliminar el documento utilizando la referencia
     await deleteDoc(habitRef);
-
-    console.log("Hábito eliminado:", habitId);
   };
 
   useEffect(() => {

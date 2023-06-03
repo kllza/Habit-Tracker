@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setError(null); // Reiniciar el mensaje de error
+    setError(null);
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -22,18 +22,15 @@ const Login = () => {
       .catch((error) => {
         let errorMessage = "Ocurrió un error durante el inicio de sesión.";
 
-        // Obtener el código de error
         const errorCode = error.code;
 
-        // Mostrar mensajes genéricos para los errores comunes
         if (errorCode === "auth/user-not-found") {
           errorMessage = "Correo electrónico no encontrado.";
         } else if (errorCode === "auth/wrong-password") {
           errorMessage = "Contraseña incorrecta.";
         }
 
-        setError(errorMessage); // Establecer el mensaje de error
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
 

@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import HabitTracker from "../../1.Atoms/HabitTracker/HabitTracker";
 
-//import HabitChart from "../../1.Atoms/HabitChart/HabitChart";
-
 const HabitProgress = ({ habitId }) => {
   const [completed, setCompleted] = useState([]);
 
@@ -28,7 +26,6 @@ const HabitProgress = ({ habitId }) => {
           completed={completed}
           setCompleted={setCompleted}
         />
-        {/* <HabitChart habitId={habit.id} /> */}
       </div>
     </div>
   );
@@ -39,7 +36,6 @@ HabitProgress.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    //frequency: PropTypes.number.isRequired,
   }).isRequired,
   habitId: PropTypes.string.isRequired,
 };

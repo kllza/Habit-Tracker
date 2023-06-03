@@ -20,7 +20,6 @@ const HabitChart = ({ habitId }) => {
 
     fetchWeeklyStats();
   }, [habitId]);
-  //Cambie esto lo rellene con habitId
 
   return (
     <div>

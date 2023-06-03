@@ -15,11 +15,9 @@ const HabitForm = ({ onHabitAdded }) => {
     event.preventDefault();
 
     if (!user) {
-      console.log("El usuario no está autenticado");
       return;
     }
 
-    // Validate form fields
     const newErrors = {};
     if (!name) {
       newErrors.name = "El nombre del hábito es requerido";
@@ -43,14 +41,12 @@ const HabitForm = ({ onHabitAdded }) => {
       startTime: moment().toDate(),
     };
 
-    // Add new habit to Firebase Firestore
     const habitsCollection = collection(db, "habits");
     const docRef = await addDoc(habitsCollection, habit);
     const habitId = docRef.id;
     const newHabit = { id: habitId, ...habit };
     await updateDoc(docRef, { habitId });
 
-    // Clear form and call onHabitAdded function
     setName("");
     setDescription("");
     setErrors({});

@@ -22,8 +22,8 @@ const Profile = ({ user }) => {
       if (docSnapshot.exists()) {
         setImageUrl(docSnapshot.data().profileImageUrl);
       } else {
-        console.log("El documento no existe en Firestore");
-        setImageUrl(""); // Establece la URL de la imagen en una cadena vacía si el documento no existe
+        
+        setImageUrl(""); 
       }
     });
 
@@ -31,13 +31,13 @@ const Profile = ({ user }) => {
       unsubscribe();
     };
   }, [user.uid, firestore]);
-  //Agregue firestore aqui
+  
 
   const handleSignOut = async () => {
     setLoading(true);
     try {
       await signOut(auth);
-      console.log("Sesion cerrada");
+      
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     } finally {

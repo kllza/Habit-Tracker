@@ -50,7 +50,7 @@ const Register = () => {
       }
 
       setError(errorMessage);
-      console.log(errorMessage);
+      
     }
 
     if (registrationSuccess) {

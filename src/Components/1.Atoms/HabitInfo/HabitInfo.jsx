@@ -9,9 +9,6 @@ const HabitInfo = ({ habit, onDelete }) => {
     <div className="w-1/2 bg-gray-20 rounded p-4 ml-4">
       <h3 className="text-xl font-bold mb-2">{habit.name}</h3>
       <p className="text-gray-500 mb-2">{habit.description}</p>
-      {/* <span className="text-blue-500 font-medium">
-        Objetivo diario: {habit.frequency} veces por semana
-      </span> */}
       <div>
         <button
           className="bg-red-500 text-white px-4 py-2 rounded mt-4 hover:bg-red-600"

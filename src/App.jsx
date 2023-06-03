@@ -23,8 +23,6 @@ function App() {
       if (user) {
         setAuthenticated(true);
         setUser(user);
-        //console.log(user);
-        console.log("Usuario Logeado");
       } else {
         setAuthenticated(false);
         setUser(null);
